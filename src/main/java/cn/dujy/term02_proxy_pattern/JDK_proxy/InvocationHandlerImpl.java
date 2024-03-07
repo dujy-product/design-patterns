@@ -23,10 +23,10 @@ public class InvocationHandlerImpl implements InvocationHandler {
     // 3、代理对象调用被代理对象的方法
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        log.info("被代理对象的类名：" + target.getClass().getName());
+        log.warn("===> 开启事物");
         //下面invoke()方法是以反射的方式来创建对象，第一个参数是要创建的对象，第二个是构成方法的参数，由第二个参数来决定创建对象使用哪个构造方法
         Object result = method.invoke(target, args);
-        log.info("代理结束");
+        log.warn("===> 关闭事物");
         return result;
     }
 }
